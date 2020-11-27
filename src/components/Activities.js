@@ -25,9 +25,9 @@ return (
         {activities.map((activity) => {
             const {id, name,description} = activity;
         return (
-            <div key={id}>
+            <div className='card-activity' key={id}>
                 <h4>{name}</h4>
-                <h4>{description}</h4>
+                <h4 className='description'>{description}</h4>
             </div>
         )
         })}
