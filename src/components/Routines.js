@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Routines () =>{
+const Routines = () => {
     return (
         <h1>It is is a routine</h1>
     )
