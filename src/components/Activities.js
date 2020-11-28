@@ -3,14 +3,14 @@ import React, {useState, useEffect} from 'react'
 
 const URL_ACTIVITIES = 'http://fitnesstrac-kr.herokuapp.com/api/activities'
 
-const UseEffectFetchActivities = () =>{
+const Activities = () =>{
     const [activities, setActivities] = useState([]);
 
     const getActivities = async () => {
         const response = await fetch(URL_ACTIVITIES);
         const activities = await response.json();
         setActivities(activities);
-        console.log(activities)
+        // console.log(activities)
  };
     
 
@@ -36,7 +36,7 @@ return (
 )
 };
 
-export default UseEffectFetchActivities;
+export default Activities;
 
 
 
