@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 // import Activities from './Activities'
 import '../index.css';
-
+// import {hitAPI} from '../api/index'
 const URL_MY_ACTIVITIES = 'http://fitnesstrac-kr.herokuapp.com/api/activities'
 const MyActivities = () => {
+
+
     const [activityName, setActivityName] = useState ('')
     const [activityDescription, setActivityDescription] = useState ('') 
     const [isDirty, setIsDirty] = useState (false)
@@ -13,7 +15,8 @@ const MyActivities = () => {
     return (
         <>
         <div className='createNewActivity'>
-            <form onSubmit={async (e) => {event.preventDefault()
+            <form onSubmit={async (e) => {
+                event.preventDefault()
                 setIsDirty(true)
                 if (name.length ===0) {
                     setIsDirty(true)
@@ -28,7 +31,7 @@ const MyActivities = () => {
                     description: description,
                 }
                 try {
-                const result = await hitAPI('POST', '/posts', activityData)
+                const result = await hitAPI('POST', '/activities', activityData)
                 const {addNewActivity} = props
                 addNewActivity(result.post)
                 console.log(result)
@@ -38,7 +41,7 @@ const MyActivities = () => {
                 setMyActivity('')
                 setActivityDescription('')
                 document.getElementById('form').style.display = 'none'
-                history.push('/posts')
+                history.push('/activities')
                 }}>
                 <div className='my-activities'>
                 <h2>Create My Activity</h2>
@@ -55,8 +58,8 @@ const MyActivities = () => {
                 setActivityDescription(e.target.value)
                 }}
                 type="text"/>
-                {isDirty && description.length === 0 ? (
-                <h3 style={{ color: 'red' }}>You need a description</h3>
+                {isDirty && description.length === 0 
+                ? (<h3 style={{ color: 'red' }}>You need a description</h3>
                 ) : null}
                 <button>Create Activity</button>
                 </div>
