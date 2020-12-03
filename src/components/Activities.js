@@ -11,7 +11,7 @@ const Activities = () =>{
         const activities = await response.json();
         setActivities(activities);
         // console.log(activities)
- };
+    };
     
 
 
@@ -20,7 +20,7 @@ useEffect(() => {
 }, []);
 return (
     <>
-    <h3>Activities</h3>
+    <h2>Activities</h2>
     <div className='activities'>
         {activities.map((activity) => {
             const {id, name,description} = activity;
