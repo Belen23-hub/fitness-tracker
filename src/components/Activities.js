@@ -11,7 +11,7 @@ const Activities = () =>{
         const activities = await response.json();
         setActivities(activities);
         // console.log(activities)
- };
+    };
     
 
 
