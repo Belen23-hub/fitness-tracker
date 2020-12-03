@@ -1,83 +1,81 @@
-const URL_ACTIVITIES = 'http://fitnesstrac-kr.herokuapp.com/api/activities'
-const BASE_URL = 'http://fitnesstrac-kr.herokuapp.com/api'
-const URL_MY_ACTIVITIES = 'http://fitnesstrac-kr.herokuapp.com/api/activities'
+const BASE_URL = "https://fitnesstrac-kr.herokuapp.com/api";
 
-export const auth = async (username, password, isNew = false) => {
-  const url = `${BASE_URL}/users` + (isNew ? '/register' : '/login')
-
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: buildHeaders(),
-    body: JSON.stringify({
-      user: {
-        username: username,
-        password: password,
-      },
-    }),
-  })
-
-  export const getToken = () => {
-  if (localStorage.getItem('auth-token')) {
-    return localStorage.getItem('auth-token')
-  } else {
-    localStorage.removeItem('auth-token')
-  }
-}
+export const getToken = () => {
+  return localStorage.getItem("auth-token");
+};
 
 export const clearToken = () => {
-  localStorage.removeItem('auth-token')
-}
+  localStorage.removeItem("auth-token");
+};
 
 const setToken = (token) => {
-  localStorage.setItem('auth-token', token)
-}
+  localStorage.setItem("auth-token", token);
+};
 
 function buildHeaders() {
   let base = {
-    'Content-Type': 'application/json',
-  }
+    "Content-Type": "application/json",
+  };
 
   if (getToken()) {
-    base['Authorization'] = `Bearer ${getToken()}`
+    base["Authorization"] = `Bearer ${getToken()}`;
   }
 
-  return base
+  return base;
 }
 
-  const { error, data } = await response.json()
+export const auth = async (username, password, isNew = false) => {
+  const url = `${BASE_URL}/users` + (isNew ? "/register" : "/login");
+  console.log("U n P in auth", username, password);
+  const response = await fetch(url, {
+    method: "POST",
+    headers: buildHeaders(),
+    body: JSON.stringify({
+      username: username,
+      password: password,
+    }),
+  });
 
-  if (error) {
-    throw Error(error.message)
+  //const { error, data } = await response.json();
+  const data = await response.json();
+  console.log("data in auth file", data);
+
+  if (data.error) {
+    //throw Error(error.message);
+    console.log(data.error);
   }
 
   if (data && data.token) {
-    setToken(data.token)
+    setToken(data.token);
   }
 
-  return data
-}
+  return data;
+};
 
 export const hitAPI = async (method, endpoint, bodyObj) => {
   const payload = {
     method: method,
     headers: buildHeaders(),
-  }
+  };
 
   if (bodyObj) {
-    payload.body = JSON.stringify(bodyObj)
+    payload.body = JSON.stringify(bodyObj);
   }
 
-  const response = await fetch(`${BASE_URL}${endpoint}`, payload)
+  const response = await fetch(`${BASE_URL}${endpoint}`, payload);
 
-  const { error, data } = await response.json()
+  const data = await response.json();
 
-  if (error) {
-    throw Error(error.message)
+  console.log("data inside of hit api", data);
+
+  if (data.error) {
+    //throw Error(error.message);
+    console.log("data.error", data.error);
   }
 
   if (data && data.token) {
-    setToken(data.token)
+    setToken(data.token);
   }
 
-  return data
-}
+  return data;
+};
