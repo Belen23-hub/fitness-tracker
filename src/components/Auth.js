@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import {auth} from '../api/index'
 
 const Auth = (props) => {
-  const { setIsLoggedIn, setUser } = props;
+  const { setIsLoggedIn } = props;
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [message, setMessage] = useState([]);
 
   return (
     <form className="log-in" onSubmit={(event) => event.preventDefault()}>
       <h3>Sign Up or Log In</h3>
-      {errorMessage ? <h5 className="error">{errorMessage}</h5> : null}
+      <h5 className="error">{message}</h5>
       <input
         type="text"
         value={username}
@@ -28,26 +28,41 @@ const Auth = (props) => {
       />
       <button
         onClick={async (event) => {
+          event.preventDefault();
           try {
             const result = await auth(username, password, true);
-            console.log("result in register button", result);
 
             setIsLoggedIn(true);
+            if (result.error) {
+              setMessage(result.error);
+              return <h3 className="error">{message}</h3>;
+            } else {
+              setIsLoggedIn(true);
+              setMessage(result.message);
+            }
+            // console.log("result in registwer button", result);
           } catch (error) {
-            setErrorMessage("User is not registered");
+            console.error(error);
           }
         }}
       >
         Register
       </button>
       <button
-        onClick={async () => {
+        onClick={async (event) => {
+          event.preventDefault();
           try {
             const result = await auth(username, password);
-            console.log("result in log in button", result);
-            setIsLoggedIn(true);
+            if (result.error) {
+              setMessage(result.error);
+              return <h3 className="error">{message}</h3>;
+            } else {
+              setIsLoggedIn(true);
+              setMessage(result.message);
+            }
+            // console.log("result in log in button", result);
           } catch (error) {
-            setErrorMessage("User name or password is incorrect.");
+            console.error(error);
           }
         }}
       >
