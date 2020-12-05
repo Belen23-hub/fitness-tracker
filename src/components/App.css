@@ -23,6 +23,69 @@ p {
   margin-bottom: 1.25rem;
   color: var(--clr-grey-5);
 }
+
+.headermessages {
+  margin: 0.5rem auto;
+}
+
+.headerlink {
+  background-color: #34eb8f;
+  color: white;
+  padding: 10px 10px;
+  /* text-align: center; */
+  display: inline-block;
+  border: 1px solid white;
+  text-decoration: none;
+  /* margin-right: 40px; */
+  /* align-items: center; */
+  /* position: relative;
+  right: 20px;
+  bottom: 15px; */
+  margin: 10px 2rem;
+}
+
+.headertitle {
+  position: relative;
+  bottom: 20px;
+}
+
+.routinelink {
+  background-color: #34eb8f;
+  color: white;
+  padding: 10px 10px;
+  /* text-align: center; */
+  display: inline-block;
+  border: 1px solid white;
+  text-decoration: none;
+  /* margin-right: 40px; */
+  /* align-items: center; */
+  /* position: relative;
+  right: 20px;
+  bottom: 15px; */
+  margin: 10px 2rem;
+}
+
+header {
+  padding: 60px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;
+}
+
+.logoutButton {
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-weight: 300;
+  color: white;
+  background-color: #34eb8f;
+  text-align: center;
+}
+
 @media screen and (min-width: 800px) {
   h1 {
     font-size: 4rem;
