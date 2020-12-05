@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
-// import Activities from './Activities'
+import Activities from './Activities'
 import '../index.css';
-// import {hitAPI} from '../api/index'
+import { useHistory } from 'react-router-dom'
+import {hitAPI} from '../api/index'
 const URL_MY_ACTIVITIES = 'http://fitnesstrac-kr.herokuapp.com/api/activities'
-const MyActivities = () => {
 
+const CreateNewActivity = () => {
 
-    const [activityName, setActivityName] = useState ('')
-    const [activityDescription, setActivityDescription] = useState ('') 
+    const [name, setActivityName] = useState ('')
+    const [description, setActivityDescription] = useState ('') 
     const [isDirty, setIsDirty] = useState (false)
-    const [myActivity, setMyActivity] = useState('')
+    const history = useHistory()
 
 
     return (
@@ -18,7 +19,7 @@ const MyActivities = () => {
             <form onSubmit={async (e) => {
                 event.preventDefault()
                 setIsDirty(true)
-                if (name.length ===0) {
+                if (name.length === 0 ) {
                     setIsDirty(true)
                     return
                 }
@@ -32,30 +33,30 @@ const MyActivities = () => {
                 }
                 try {
                 const result = await hitAPI('POST', '/activities', activityData)
-                const {addNewActivity} = props
-                addNewActivity(result.post)
+                console.log(result)
+                
+                name(result.activity)
                 console.log(result)
                 } catch (error) {
                 console.error(error)
                 }
-                setMyActivity('')
+                setActivityName('')
                 setActivityDescription('')
-                document.getElementById('form').style.display = 'none'
                 history.push('/activities')
                 }}>
                 <div className='my-activities'>
                 <h2>Create My Activity</h2>
                 <h3>Activity Name:</h3>
-                <input value={activityName} onChange={(event) =>{
+                <input value={name} onChange={(event) =>{
                     setActivityName(event.target.value)
                 }}
                 type="text" />
-                {isDirty && title.length === 0 ? (
-                <h3 style={{ color: 'red' }}>You need a title</h3>
+                {isDirty && name.length === 0  ? (
+                <h3 style={{ color: 'red' }}>Activity already exists</h3>
                 ) : null}
                 <h3>Description:</h3>
-                <textarea value={activityDescription} onChange={(e) => {
-                setActivityDescription(e.target.value)
+                <textarea value={description} onChange={(event) => {
+                setActivityDescription(event.target.value)
                 }}
                 type="text"/>
                 {isDirty && description.length === 0 
@@ -69,4 +70,4 @@ const MyActivities = () => {
     )
 }
 
-export default MyActivities;
+export default CreateNewActivity;

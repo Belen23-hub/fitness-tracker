@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-
-import { auth } from "../api";
+import {auth} from '../api/index'
 
 const Auth = (props) => {
   const { setIsLoggedIn } = props;
@@ -32,6 +31,8 @@ const Auth = (props) => {
           event.preventDefault();
           try {
             const result = await auth(username, password, true);
+
+            setIsLoggedIn(true);
             if (result.error) {
               setMessage(result.error);
               return <h3 className="error">{message}</h3>;

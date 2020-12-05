@@ -69,7 +69,7 @@ export const hitAPI = async (method, endpoint, bodyObj) => {
   console.log("data inside of hit api", data);
 
   if (data.error) {
-    //throw Error(error.message);
+    // throw Error(error.message);
     console.log("data.error", data.error);
   }
 

@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react'
 // import {URL_ACTIVITIES} from '../api/index'
+import {Auth} from "./Auth";
+
 
 const URL_ACTIVITIES = 'http://fitnesstrac-kr.herokuapp.com/api/activities'
 
-const Activities = () =>{
+const Activities = (props) =>{
     const [activities, setActivities] = useState([]);
 
     const getActivities = async () => {
@@ -37,6 +39,5 @@ return (
 };
 
 export default Activities;
-
 
 

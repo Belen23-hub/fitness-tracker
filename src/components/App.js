@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-
 import { getToken, clearToken, hitAPI } from "../api";
 import Auth from "./Auth";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
@@ -8,13 +7,15 @@ import Activities from "./Activities";
 import "../index.css";
 import MyRoutines from "./MyRoutines";
 import Routines from "./Routines";
-import MyActivities from "./MyActivities";
+import CreateNewActivity from "./CreateNewActivity";
 // import { Router, Switch } from 'react-router-dom';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(!!getToken());
   const [username, setUsername] = useState("");
   const [user, setUser] = useState({});
+  const [activityList, setActivityList] = useState([])
+
 
   useEffect(() => {
     async function fetchData() {
@@ -31,9 +32,16 @@ const App = () => {
   return (
     <Router>
       <header>
+        <div className="headermessages">
         <Link to="/">Home</Link>
-        <Link to="/MyActivities">My Activities</Link>
-        <Link to="/MyRoutines">My Routines</Link>
+        <Link to="/Activities">Activities</Link>
+        <Link to="/Routines">Routines</Link>
+        {isLoggedIn ? (
+          <Link to="/MyRoutines" className="header-link">
+            <span>My Routines</span>
+          </Link>
+        ) : null}
+        </div>
         <div className="app">
           {isLoggedIn ? (
             <>
@@ -61,18 +69,24 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <h1>Welcome tu your Fitness tracker App!</h1>
-          <Activities />
-          <Routines />
+          {/* <Activities />
+          <Routines /> */}
         </Route>
-        <Route path="/Myactivities">
-          <MyActivities />
+        <Route path="/Activities">
+          {isLoggedIn ? (
+          <CreateNewActivity  />
+        ) : null}
+          <Activities />
         </Route>
         <Route exact path="/MyRoutines">
           <MyRoutines />
+        </Route>
+        <Route exact path="/Routines">
+          <Routines />
         </Route>
       </Switch>
     </Router>
   );
 };
 
-export default App;
+export default App
