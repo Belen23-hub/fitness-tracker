@@ -22,14 +22,14 @@ useEffect(() => {
 }, []);
 return (
     <>
-    <h2>Activities</h2>
+    <h1 className="activities-title">Activities</h1>
     <div className='activities'>
         {activities.map((activity) => {
             const {id, name,description} = activity;
         return (
             <div className='card-activity' key={id}>
-                <h4>{name}</h4>
-                <h4 className='description'>{description}</h4>
+                <h3 className="card-activity-name">{name}</h3>
+                <h4 className='card-description'>Description: {description}</h4>
             </div>
         )
         })}
