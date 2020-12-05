@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react'
 // import {URL_ACTIVITIES} from '../api/index'
+import {Auth} from "./Auth";
+
 
 const URL_ACTIVITIES = 'http://fitnesstrac-kr.herokuapp.com/api/activities'
 
-const Activities = () =>{
+const Activities = (props) =>{
     const [activities, setActivities] = useState([]);
 
     const getActivities = async () => {
@@ -18,6 +20,7 @@ const Activities = () =>{
 useEffect(() => {
     getActivities();
 }, []);
+
 return (
     <>
     <h2>Activities</h2>
@@ -32,11 +35,17 @@ return (
         )
         })}
     </div>
+    <div className='my-activities'>
+        {activities.filter(activity => activity.id).map(filteredActivity => (
+            <div>
+                {filteredActivity.id}
+            </div>
+        ))})
+    </div>
     </>
 )
 };
 
 export default Activities;
-
 
 

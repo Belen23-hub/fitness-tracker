@@ -6,9 +6,10 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Activities from "./Activities";
 import "../index.css";
 import MyRoutines from "./MyRoutines";
+// import MyActivities from "./MyActivities"
 import Routines from "./Routines";
 import CreateNewActivity from "./CreateNewActivity";
-import MyActivities from "./MyActivities"
+
 // import { Router, Switch } from 'react-router-dom';
 
 const App = () => {
@@ -17,14 +18,7 @@ const App = () => {
   const [user, setUser] = useState({});
   const [activityList, setActivityList] = useState([])
 
-  // function addNewActivity(newActivity) {
-  //   return setActivities([...activities, newActivity])
-  // }
-
-  // function updateActivity(updatedActivity) {
-  //   let index = activities.findIndex((activity) => {
-  //     return activity.id === updatedActivity.id;
-  //   });
+    
 
   useEffect(() => {
     async function fetchData() {
@@ -85,17 +79,8 @@ const App = () => {
           {isLoggedIn ? (
           <CreateNewActivity  />
         ) : null}
-          <Activities 
-          // activityList={filteredMyActivities()}
-          //   setActivityList={setActivityList}
-          //   updateActivity={updateActivity}
-            />
-          {/* <MyActivities
-          // activityList={filteredMyActivities()}
-          //   setActivityList={setActivityList}
-          //   updateActivity={updateActivity}
-          //   isLoggedIn= {isLoggedIn}
-            /> */}
+          <Activities />
+          {/* <MyActivities /> */}
         </Route>
         <Route exact path="/MyRoutines">
           <MyRoutines />

@@ -3,21 +3,18 @@
 
 
 // const MyActivities = (props) => {
-//     const {activities, setActivities, updateActivity} = props
+//     const {activities} = props
+
 //     function filteredMyActivities() {
-//         const filteredMyActivities = activities.filter((activity) =>{
+//         const filterMyActivities = activities.filter((activity) =>{
 //             return activity.id
 //         })
-//         return filteredMyActivities
+//         return filterMyActivities()
 //     }   
 
 //     return (
 //         <div>
-//             <Activities
-//             activityList={filteredMyActivities}
-//             setActivityList={setActivities}
-//             updateActivity={updateActivity}
-//             />
+
 //         </div>
 //     )
 // }

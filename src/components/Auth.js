@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-
-import { auth } from "../api";
+import {auth} from '../api/index'
 
 const Auth = (props) => {
   const { setIsLoggedIn, setUser } = props;
@@ -31,7 +30,7 @@ const Auth = (props) => {
         onClick={async (event) => {
           try {
             const result = await auth(username, password, true);
-            console.log("result in registwer button", result);
+            console.log("result in register button", result);
 
             setIsLoggedIn(true);
           } catch (error) {
