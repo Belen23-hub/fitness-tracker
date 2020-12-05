@@ -6,10 +6,8 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Activities from "./Activities";
 import "../index.css";
 import MyRoutines from "./MyRoutines";
-// import MyActivities from "./MyActivities"
 import Routines from "./Routines";
 import CreateNewActivity from "./CreateNewActivity";
-
 // import { Router, Switch } from 'react-router-dom';
 
 const App = () => {
@@ -18,7 +16,6 @@ const App = () => {
   const [user, setUser] = useState({});
   const [activityList, setActivityList] = useState([])
 
-    
 
   useEffect(() => {
     async function fetchData() {
@@ -80,7 +77,6 @@ const App = () => {
           <CreateNewActivity  />
         ) : null}
           <Activities />
-          {/* <MyActivities /> */}
         </Route>
         <Route exact path="/MyRoutines">
           <MyRoutines />

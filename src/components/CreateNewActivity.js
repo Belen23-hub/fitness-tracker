@@ -5,9 +5,8 @@ import { useHistory } from 'react-router-dom'
 import {hitAPI} from '../api/index'
 const URL_MY_ACTIVITIES = 'http://fitnesstrac-kr.herokuapp.com/api/activities'
 
-const CreateNewActivity = (props) => {
+const CreateNewActivity = () => {
 
-    const { addNewActivity } = props
     const [name, setActivityName] = useState ('')
     const [description, setActivityDescription] = useState ('') 
     const [isDirty, setIsDirty] = useState (false)
@@ -20,7 +19,7 @@ const CreateNewActivity = (props) => {
             <form onSubmit={async (e) => {
                 event.preventDefault()
                 setIsDirty(true)
-                if (name.length ===0) {
+                if (name.length === 0 ) {
                     setIsDirty(true)
                     return
                 }
@@ -43,7 +42,6 @@ const CreateNewActivity = (props) => {
                 }
                 setActivityName('')
                 setActivityDescription('')
-                // document.getElementById('createNewActivity').style.display = 'none'
                 history.push('/activities')
                 }}>
                 <div className='my-activities'>
@@ -53,8 +51,8 @@ const CreateNewActivity = (props) => {
                     setActivityName(event.target.value)
                 }}
                 type="text" />
-                {isDirty && title.length === 0 ? (
-                <h3 style={{ color: 'red' }}>You need a title</h3>
+                {isDirty && name.length === 0  ? (
+                <h3 style={{ color: 'red' }}>Activity already exists</h3>
                 ) : null}
                 <h3>Description:</h3>
                 <textarea value={description} onChange={(event) => {

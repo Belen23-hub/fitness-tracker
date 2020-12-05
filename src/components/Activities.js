@@ -20,7 +20,6 @@ const Activities = (props) =>{
 useEffect(() => {
     getActivities();
 }, []);
-
 return (
     <>
     <h2>Activities</h2>
@@ -34,13 +33,6 @@ return (
             </div>
         )
         })}
-    </div>
-    <div className='my-activities'>
-        {activities.filter(activity => activity.id).map(filteredActivity => (
-            <div>
-                {filteredActivity.id}
-            </div>
-        ))})
     </div>
     </>
 )
