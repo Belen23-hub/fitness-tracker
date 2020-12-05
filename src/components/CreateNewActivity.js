@@ -3,6 +3,7 @@ import Activities from './Activities'
 import '../index.css';
 import { useHistory } from 'react-router-dom'
 import {hitAPI} from '../api/index'
+
 const URL_MY_ACTIVITIES = 'http://fitnesstrac-kr.herokuapp.com/api/activities'
 
 const CreateNewActivity = () => {
@@ -19,7 +20,7 @@ const CreateNewActivity = () => {
             <form onSubmit={async (e) => {
                 event.preventDefault()
                 setIsDirty(true)
-                if (name.length === 0 ) {
+                if (name === name ) {
                     setIsDirty(true)
                     return
                 }
@@ -45,24 +46,22 @@ const CreateNewActivity = () => {
                 history.push('/activities')
                 }}>
                 <div className='my-activities'>
-                <h2>Create My Activity</h2>
-                <h3>Activity Name:</h3>
-                <input value={name} onChange={(event) =>{
+                <h2 className="my-activites-title">Create My Activity</h2>
+                <input className="activity-name-input" placeholder="Activity Name" value={name} onChange={(event) =>{
                     setActivityName(event.target.value)
                 }}
                 type="text" />
-                {isDirty && name.length === 0  ? (
-                <h3 style={{ color: 'red' }}>Activity already exists</h3>
+                {isDirty && name === name  ? (
+                <h2 style={{ color: 'red' }}>Activity already exists</h2>
                 ) : null}
-                <h3>Description:</h3>
-                <textarea value={description} onChange={(event) => {
+                <textarea className="my-activity-description-area" placeholder="Activity Description"value={description} onChange={(event) => {
                 setActivityDescription(event.target.value)
                 }}
                 type="text"/>
                 {isDirty && description.length === 0 
-                ? (<h3 style={{ color: 'red' }}>You need a description</h3>
+                ? (<h2 style={{ color: 'red' }}>You need a description</h2>
                 ) : null}
-                <button>Create Activity</button>
+                <button className="my-activities-button">Create Activity</button>
                 </div>
             </form>
         </div>
