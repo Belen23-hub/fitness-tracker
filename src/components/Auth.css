@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
+.log-in {
+  border: none;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 25%;
+  padding: 12px 20px;
+  margin: 10px 2rem;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-family: "Patrick Hand", cursive;
+  position: relative;
+  top: 15px;
+}
+
+input[type="text"],
+input[type="username"] {
+  width: 25%;
+  padding: 12px 20px;
+  margin: 10px 2rem;
+  display: inline-block;
+  border: 1px solid grey;
+  box-sizing: border-box;
+  font-family: "Patrick Hand", cursive;
+  position: relative;
+  top: 15px;
+}
+
+.register-button {
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-weight: 300;
+  color: white;
+  background-color: #34eb8f;
+  text-align: center;
+  position: relative;
+  top: 15px;
+}
+
+.log-in-button {
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-weight: 300;
+  color: white;
+  background-color: #34eb8f;
+  text-align: center;
+  position: relative;
+  top: 15px;
+}
+
+.error {
+  color: red;
+  size: large;
+}
+
+.header_text {
+  /* text-align: center;
+  position: relative;
+  right: 80px;
+  position: relative;
+  top: 100px; */
+  margin-left: auto;
+  margin-right: auto;
+}
