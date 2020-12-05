@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import {auth} from '../api/index'
+import { auth } from "../api/index";
+
+import "./Auth.css";
 
 const Auth = (props) => {
   const { setIsLoggedIn } = props;
@@ -10,7 +12,7 @@ const Auth = (props) => {
 
   return (
     <form className="log-in" onSubmit={(event) => event.preventDefault()}>
-      <h3>Sign Up or Log In</h3>
+      {/* <h3 className="header_text">Sign Up or Log In</h3> */}
       <h5 className="error">{message}</h5>
       <input
         type="text"
@@ -27,6 +29,7 @@ const Auth = (props) => {
         className="login"
       />
       <button
+        className="register-button"
         onClick={async (event) => {
           event.preventDefault();
           try {
@@ -46,9 +49,10 @@ const Auth = (props) => {
           }
         }}
       >
-        Register
+        Sign Up
       </button>
       <button
+        className="log-in-button"
         onClick={async (event) => {
           event.preventDefault();
           try {
