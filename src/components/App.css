@@ -30,11 +30,11 @@ p {
 
 .headerlink {
   background-color: #34eb8f;
-  color: white;
+  color:black;
   padding: 10px 10px;
   /* text-align: center; */
   display: inline-block;
-  border: 1px solid white;
+  border: 1px solid black;
   text-decoration: none;
   /* margin-right: 40px; */
   /* align-items: center; */
@@ -51,11 +51,11 @@ p {
 
 .routinelink {
   background-color: #34eb8f;
-  color: white;
   padding: 10px 10px;
+  color: black;
   /* text-align: center; */
   display: inline-block;
-  border: 1px solid white;
+  border: 1px solid black;
   text-decoration: none;
   /* margin-right: 40px; */
   /* align-items: center; */
@@ -68,9 +68,14 @@ p {
 header {
   padding: 60px;
   text-align: center;
-  background: #1abc9c;
+  background: #116e5c;
   color: white;
   font-size: 30px;
+  flex: none;
+  /* position:fixed;
+  left: 0;
+  right: 0;
+  top: 0; */
 }
 
 .logoutButton {

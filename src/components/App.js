@@ -16,6 +16,7 @@ const App = () => {
   const [username, setUsername] = useState("");
   const [user, setUser] = useState({});
   const [activityList, setActivityList] = useState([]);
+    const [routines, setRoutines] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -34,7 +35,6 @@ const App = () => {
       <header>
         <div className="headermessages">
           <h1 className="headertitle">Fitness Tracker</h1>
-
           <Link className="headerlink" to="/">
             Home
           </Link>
@@ -54,7 +54,7 @@ const App = () => {
           {isLoggedIn ? (
             <>
               <div className="logout">
-                <h1 className="loginMessage">Thanks for logging in!</h1>
+                <h3 className="loginMessage">Thanks for logging in!</h3>
                 <span>
                   <button
                     className="logoutButton"
@@ -73,19 +73,16 @@ const App = () => {
           )}
         </div>
       </header>
-
       <Switch>
         <Route exact path="/">
           <h1>Welcome to your Fitness tracker App!</h1>
-          {/* <Activities />
-          <Routines /> */}
         </Route>
         <Route path="/Activities">
           {isLoggedIn ? <CreateNewActivity /> : null}
           <Activities />
         </Route>
         <Route exact path="/MyRoutines">
-          <MyRoutines />
+          <MyRoutines setRoutines={setRoutines}/>
         </Route>
         <Route exact path="/Routines">
           <Routines />
