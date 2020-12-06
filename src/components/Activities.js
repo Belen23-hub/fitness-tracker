@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
-// import {URL_ACTIVITIES} from '../api/index'
-import {Auth} from "./Auth";
+
+
 
 
 const URL_ACTIVITIES = 'http://fitnesstrac-kr.herokuapp.com/api/activities'
@@ -12,7 +12,6 @@ const Activities = (props) =>{
         const response = await fetch(URL_ACTIVITIES);
         const activities = await response.json();
         setActivities(activities);
-        // console.log(activities)
     };
     
 
