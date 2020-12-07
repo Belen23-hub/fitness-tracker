@@ -4,7 +4,7 @@ import '../index.css';
 import { useHistory } from 'react-router-dom'
 import {hitAPI} from '../api/index'
 
-const URL_MY_ACTIVITIES = 'http://fitnesstrac-kr.herokuapp.com/api/activities'
+const URL_MY_ACTIVITIES = 'https://fitnesstrac-kr.herokuapp.com/api/activities'
 
 const CreateNewActivity = () => {
 

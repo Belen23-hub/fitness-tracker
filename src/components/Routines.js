@@ -4,7 +4,7 @@ import React, {useState, useEffect} from 'react'
 
 
 
-const URL_ROUTINES = 'http://fitnesstrac-kr.herokuapp.com/api/routines'
+const URL_ROUTINES = 'https://fitnesstrac-kr.herokuapp.com/api/routines'
 
 const Routines = (props) =>{
     const [routines, setRoutines] = useState([]);

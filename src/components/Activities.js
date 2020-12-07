@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 
 
 
-const URL_ACTIVITIES = 'http://fitnesstrac-kr.herokuapp.com/api/activities'
+const URL_ACTIVITIES = 'https://fitnesstrac-kr.herokuapp.com/api/activities'
 
 const Activities = (props) =>{
     const [activities, setActivities] = useState([]);
